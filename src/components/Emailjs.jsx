@@ -57,6 +57,19 @@ export const Emailjs = () => {
       setShowSuccessPopup(true);
     }
   };
+const handlePopupClose = () => {
+    setShowSuccessPopup(false);
+    setFormData({
+      name: "",
+      email: "",
+      message: "",
+    });
+    setFormErrors({
+      name: "",
+      email: "",
+      message: "",
+    });
+  };
 
 
   return (
@@ -105,6 +118,12 @@ export const Emailjs = () => {
           value="Send"
           className="px-4 py-2 border-black border-2 mt-4 cursor-pointer rounded-full"
         />
+         {showSuccessPopup && (
+        <div className="success-popup">
+          <p>Form submitted successfully!</p>
+          <button onClick={handlePopupClose}>Close</button>
+        </div>
+      )}
       </form>
     </div>
   );
